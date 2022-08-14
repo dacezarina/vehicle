@@ -1,0 +1,13 @@
+<div class="spinner-border" role="status" *ngIf="isLoading">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div *ngIf="isLoading == false">
+  <div *ngFor="let user of userList" class="list-group">
+    <app-user *ngIf="user.userid != undefined" [userModel]="user" (selectedUser)="selectedUserClicked($event)"></app-user>
+  </div>
+  <!--<app-map *ngIf="isLoading == false"></app-map>-->
+  <div id="map"></div>
+</div>
+<div *ngIf="failedToLoad">
+  <app-error></app-error>
+</div>
